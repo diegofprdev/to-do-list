@@ -2,7 +2,7 @@ import { HiOutlineBookmarkAlt } from "react-icons/hi";
 
 import ModeStyle from "../ModeStyle";
 
-const Header = () => {
+const Header = ({ totalTasks = 0 }) => {
 
     return (
         <>
@@ -14,7 +14,7 @@ const Header = () => {
                         </div>
                         <h3 className="text-gray-700 font-semibold text-xl pt-0.5 dark:text-white">To do list</h3>
                         <span className="bg-lime-200 text-gray-700 text-md font-semibold rounded-md py-1 px-2 dark:bg-green-200">
-                            10
+                            {totalTasks}
                         </span>
                     </div>
                 </div>

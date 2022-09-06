@@ -1,8 +1,9 @@
 import { useState } from "react";
-import ModalDetailTask from "../ModalDetailTask";
 
 import { HiOutlinePencil, HiOutlineTrash, HiOutlineEye } from "react-icons/hi";
 import ModalDeleteTask from "../ModalDeleteTask";
+import ModalDetailTask from "../ModalDetailTask";
+import ModalUpdateTask from "../ModalUpdateTask";
 
 const STATUS_ITEM = {
     'to-do': {
@@ -19,12 +20,13 @@ const STATUS_ITEM = {
     }
 }
 
-const TaskItem = ({ id = '', title = '', description = '', status = 'to-do', date = '', deleteTask }) => {
+const TaskItem = ({ id = '', title = '', description = '', status = 'to-do', date = '', deleteTask, updateTask }) => {
 
     const { label, color } = STATUS_ITEM[status]
 
     const [showModalDetailTask, setShowModalDetailTask] = useState(false)
     const [showModalDeleteTask, setShowModalDeleteTask] = useState(false)
+    const [showModalUpdateTask, setShowModalUpdateTask] = useState(false)
 
     return (
         <>
@@ -46,12 +48,14 @@ const TaskItem = ({ id = '', title = '', description = '', status = 'to-do', dat
                             />
                         </span>
                         <span className="text-blue-400 text-xl">
-                            <HiOutlinePencil />
+                            <HiOutlinePencil
+                                className="cursor-pointer"
+                                onClick={() => setShowModalUpdateTask(true)} />
                         </span>
                         <span className="text-rose-400 text-xl">
                             <HiOutlineTrash
-                            className="cursor-pointer" 
-                            onClick={() => setShowModalDeleteTask(true)}
+                                className="cursor-pointer"
+                                onClick={() => setShowModalDeleteTask(true)}
                             />
                         </span>
                     </span>
@@ -75,6 +79,19 @@ const TaskItem = ({ id = '', title = '', description = '', status = 'to-do', dat
                         title={title}
                         setShowModalDeleteTask={setShowModalDeleteTask}
                         deleteTask={deleteTask} />
+                </td></tr>
+            }
+            {
+                showModalUpdateTask && <tr><td>
+                    <ModalUpdateTask
+                        idTask={id}
+                        titleTask={title}
+                        descriptionTask={description}
+                        statusTask={status}
+                        dateTask={date}
+                        setShowModalUpdateTask={setShowModalUpdateTask}
+                        updateTask={updateTask}
+                    />
                 </td></tr>
             }
         </>

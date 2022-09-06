@@ -26,7 +26,7 @@ const getAll = () => {
 
 }
 
-const remove = ({ id = ''}) => {
+const remove = ({ id = '' }) => {
 
     return new Promise((resolve, reject) => {
 
@@ -42,5 +42,31 @@ const remove = ({ id = ''}) => {
     })
 }
 
-export { add, getAll, remove }
+const update = ({ taskToUpdate = {} }) => {
+
+    return new Promise((resolve, reject) => {
+
+        try {
+            const listOfTasksSaved = JSON.parse(localStorage.getItem('tasks-to-do-list')) || []
+            const taskFound = listOfTasksSaved.find(task => task.id === taskToUpdate.id);
+            if (taskFound) {
+                //const taskIndex = listOfTasksSaved.indexOf(taskFound);
+                taskFound.title = taskToUpdate.title;
+                taskFound.description = taskToUpdate.description;
+                taskFound.status = taskToUpdate.status;
+                taskFound.date = taskToUpdate.date;
+                //listOfTasksSaved.splice(taskIndex,0,taskFound);
+
+                localStorage.setItem('tasks-to-do-list', JSON.stringify(listOfTasksSaved));
+                resolve(taskFound)
+            }
+        }
+        catch {
+            reject(null)
+        }
+    })
+
+}
+
+export { add, getAll, remove, update }
 

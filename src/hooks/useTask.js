@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { add, getAll, remove } from '../services/Task'
+import { add, getAll, remove, update } from '../services/Task'
 
 export const useTask = () => {
 
@@ -10,7 +10,7 @@ export const useTask = () => {
         setTasks(getAll());
     },[])
 
-    const save = async ({ task = {} }) => {
+    const addTask = async ({ task = {} }) => {
         await add({ task });
         setTasks(getAll());
     }
@@ -20,5 +20,10 @@ export const useTask = () => {
         setTasks(getAll());
     }
 
-    return { save, deleteTask, tasks }
+    const updateTask = async ({ task = {}}) => {
+        await update({ taskToUpdate : task });
+        setTasks(getAll());
+    }
+
+    return { addTask, deleteTask, updateTask, tasks }
 }

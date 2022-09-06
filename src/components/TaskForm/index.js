@@ -42,7 +42,7 @@ const taskFormReducer = (state, action) => {
 
 }
 
-const TaskForm = ({ save } = {}) => {
+const TaskForm = ({ addTask } = {}) => {
 
     const [state, dispatch] = useReducer(taskFormReducer, initialTaskForm);
 
@@ -59,7 +59,7 @@ const TaskForm = ({ save } = {}) => {
             date
         }
 
-        save({ task: newTask });
+        addTask({ task: newTask });
 
     }
 

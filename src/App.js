@@ -6,14 +6,14 @@ import TaskList from "./components/TaskList";
 
 function App() {
 
-  const { save, deleteTask, tasks } = useTask();
+  const { addTask, deleteTask, updateTask, tasks } = useTask();
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-800">
-      <Header />
+      <Header totalTasks={tasks.length}/>
       <div className="grid grid-cols-3 gap-10 m-4">
-        <TaskForm save={save}/>
-        <TaskList tasks={tasks} deleteTask={deleteTask}/>
+        <TaskForm addTask={addTask}/>
+        <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask}/>
       </div>
     </div>
   );
