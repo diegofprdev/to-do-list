@@ -4,8 +4,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+@media (prefers-colors-schema: dark) {
+    body {
+        background-color: #1f2937;
+    }
+}
+
 body {
     font-family: 'Poppins', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 4px;
+    background-color: #4b5563;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #a7f3d0;
+    border-radius: 4px;
 }
 
 .shadow-black {

@@ -15,6 +15,7 @@ function App() {
         <TaskForm addTask={addTask}/>
         <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask}/>
       </div>
+      <br/>
     </div>
   );
 }
