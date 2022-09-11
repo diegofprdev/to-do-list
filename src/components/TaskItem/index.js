@@ -31,15 +31,15 @@ const TaskItem = ({ id = '', title = '', description = '', status = 'to-do', dat
     return (
         <>
             <tr>
-                <td>{title}</td>
-                <td>{description}</td>
-                <td>
+                <td className="border-b-2 border-gray-200 dark:border-gray-500">{title}</td>
+                <td className="border-b-2 border-gray-200 dark:border-gray-500">{description}</td>
+                <td className="border-b-2 border-gray-200 dark:border-gray-500">
                     <span style={{ borderColor: color, color }} className={`border-2 rounded-md px-2`}>
                         {label}
                     </span>
                 </td>
-                <td>{date}</td>
-                <td>
+                <td className="border-b-2 border-gray-200 dark:border-gray-500">{date}</td>
+                <td className="border-b-2 border-gray-200 dark:border-gray-500">
                     <span className="flex justify-center gap-2">
                         <span className="text-green-400 text-xl">
                             <HiOutlineEye
